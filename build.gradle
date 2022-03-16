@@ -1,0 +1,35 @@
+buildscript {
+    // ext는 build.gradle내에서 사용할 수 있는 전역변수
+    ext {
+        springBootVersion = "2.1.7.RELEASE"
+    }
+    // 의존성들을 어떤 저장소에서 가져올지 정하는 부분
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+    // 개발에 필요한 의존성을 명시하는 부분
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+// spring을 사용하기 위한 필수 플러그인 4인방
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group "com.woollim"
+version "1.0-SNAPSHOT"
+sourceCompatibility = 1.8
+
+// 의존성들을 어떤 저장소에서 가져올지 정하는 부분
+repositories {
+    mavenCentral()
+    jcenter()
+}
+// 개발에 필요한 의존성을 명시하는 부분
+dependencies {
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+}
